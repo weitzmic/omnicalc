@@ -35,11 +35,12 @@ gem 'sdoc'
 # gem 'capistrano-rails', group: :development
 
 group :development do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem "web-console"
+  gem "awesome_print"
+  gem "pry-rails"
 
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console'
   gem 'listen', '~> 3.0.5'
   gem "wdm" if Gem.win_platform?
 end
