@@ -191,7 +191,7 @@ to strip out all whitespace before doing your other processing." do
 We don't need to spend time learning regexes right now, but if you ever find yourself needing to detect particular _patterns_ within strings, then let them ring a bell. For now, the regex `/[^a-z0-9\s]/i` rejects any letter or digit. So, try something like
 
 ```ruby
-@text.gsub(/[^a-z0-9\s]/i, "")`
+@text.gsub(/[^a-z0-9\s]/i, "")
 ```
 
 to strip out all punctuation before doing your other processing." do
@@ -202,7 +202,7 @@ to strip out all punctuation before doing your other processing." do
         with: "The first draft is just you telling yourself the story."
 
       fill_in "Special Word (optional)",
-        with: "the"
+        with: "story."
 
       click_button "Submit"
 
