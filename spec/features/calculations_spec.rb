@@ -119,7 +119,7 @@ Don't forget to remove _all_ sorts of whitespace from the string, including newl
 We don't need to spend time learning regexes right now, but if you ever find yourself needing to detect particular _patterns_ within strings, then let them ring a bell. For now, the regex `/\\s+/` matches one or more contiguous whitespace characters. So, try something like
 
 ```ruby
-@text.gsub(/\s+/, "")`
+@text.gsub(/\\s+/, \"\")
 ```
 
 to strip out all whitespace before doing your other processing." do
@@ -191,7 +191,7 @@ to strip out all whitespace before doing your other processing." do
 We don't need to spend time learning regexes right now, but if you ever find yourself needing to detect particular _patterns_ within strings, then let them ring a bell. For now, the regex `/[^a-z0-9\s]/i` rejects any letter or digit. So, try something like
 
 ```ruby
-@text.gsub(/[^a-z0-9\s]/i, "")
+@text.gsub(/[^a-z0-9\\s]/i, \"\")
 ```
 
 to strip out all punctuation before doing your other processing." do
