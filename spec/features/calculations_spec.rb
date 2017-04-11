@@ -202,11 +202,11 @@ to strip out all punctuation before doing your other processing." do
         with: "The first draft is just you telling yourself the story."
 
       fill_in "Special Word (optional)",
-        with: "story."
+        with: "story"
 
       click_button "Submit"
 
-      expect(page).to have_css("dd#occurrences", text: 2)
+      expect(page).to have_css("dd#occurrences", text: 1)
     end
   end
 
