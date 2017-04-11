@@ -188,7 +188,7 @@ to strip out all whitespace before doing your other processing." do
 
 [Regular expressions](https://regexone.com/), or \"regexes\", are a very powerful way to search for _patterns_ within strings, and are almost a whole programming language unto themselves. In Ruby, regexes are wrapped in forward slashes, the way strings are wrapped in quotes.
 
-We don't need to spend time learning regexes right now, but if you ever find yourself needing to detect particular _patterns_ within strings, then let them ring a bell. For now, the regex `/[^a-z0-9\s]/i` rejects any letter or digit. So, try something like
+We don't need to spend time learning regexes right now, but if you ever find yourself needing to detect particular _patterns_ within strings, then let them ring a bell. For now, the regex `/[^a-z0-9\\s]/i` rejects any letter or digit. So, try something like
 
 ```ruby
 @text.gsub(/[^a-z0-9\\s]/i, \"\")
