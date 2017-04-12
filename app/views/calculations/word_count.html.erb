@@ -7,35 +7,35 @@
       <dt>
         Text
       </dt>
-      <dd id="text">
+      <dd data-grade="text">
         <%= simple_format(@text) %>
       </dd>
 
       <dt>
         Word Count
       </dt>
-      <dd id="word_count">
+      <dd data-grade="word_count">
         <%= @word_count %>
       </dd>
 
       <dt>
         Character Count (with spaces)
       </dt>
-      <dd id="character_count_with_spaces">
+      <dd data-grade="character_count_with_spaces">
         <%= @character_count_with_spaces %>
       </dd>
 
       <dt>
         Character Count (without spaces)
       </dt>
-      <dd id="character_count_without_spaces">
+      <dd data-grade="character_count_without_spaces">
         <%= @character_count_without_spaces %>
       </dd>
 
       <dt>
         Occurrences of <code><%= @special_word %></code>
       </dt>
-      <dd id="occurrences">
+      <dd data-grade="occurrences">
         <%= @occurrences %>
       </dd>
     </dl>
