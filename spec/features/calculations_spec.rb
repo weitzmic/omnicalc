@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Calculation", type: :feature do
-  feature "Word Count simple" do
+  feature "Text simple" do
     it "parrots back the submitted text", points: 1, hint: I18n.t("hints.one") do
       visit "/word_count/new"
 
@@ -64,7 +64,7 @@ RSpec.describe "Calculation", type: :feature do
     end
   end
 
-  feature "Word Count with mixed case" do
+  feature "Text with mixed case" do
     it "displays the word count", points: 1 do
       visit "/word_count/new"
 
@@ -113,7 +113,7 @@ RSpec.describe "Calculation", type: :feature do
     end
   end
 
-  feature "Word Count with punctuation" do
+  feature "Text with punctuation" do
     it "displays the word count", points: 1 do
       visit "/word_count/new"
 

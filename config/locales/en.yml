@@ -21,7 +21,6 @@
 
 en:
   hints:
-    one: "This test should pass right away."
     two: |
          Any contiguous chunk of non-whitespace characters counts as a "word". "Whitespace characters" include newlines (`\n`), tabs (`\t`), carriage returns (`\r`), etc.
 
