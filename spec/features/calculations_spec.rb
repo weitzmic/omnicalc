@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.describe "Calculation", type: :feature do
-  feature "Text simple" do
+RSpec.describe "Using", type: :feature do
+  feature "simple text" do
     it "parrots back the submitted text", points: 1, hint: I18n.t("hints.one") do
       visit "/word_count/new"
 
@@ -49,7 +49,7 @@ RSpec.describe "Calculation", type: :feature do
       expect(page).to have_css(".character_count_without_spaces", text: 45)
     end
 
-    it "displays count of the special word occurrences", points: 16, hint: I18n.t("hints.five") do
+    it "displays the count of the special word occurrences", points: 16, hint: I18n.t("hints.five") do
       visit "/word_count/new"
 
       fill_in "Text",
@@ -64,7 +64,7 @@ RSpec.describe "Calculation", type: :feature do
     end
   end
 
-  feature "Text with mixed case" do
+  feature "text with mixed case" do
     it "displays the word count", points: 1 do
       visit "/word_count/new"
 
@@ -98,7 +98,7 @@ RSpec.describe "Calculation", type: :feature do
       expect(page).to have_css(".character_count_without_spaces", text: 45)
     end
 
-    it "displays count of the special word occurrences", points: 4 do
+    it "displays the count of the special word occurrences", points: 4 do
       visit "/word_count/new"
 
       fill_in "Text",
@@ -113,7 +113,7 @@ RSpec.describe "Calculation", type: :feature do
     end
   end
 
-  feature "Text with punctuation" do
+  feature "text with punctuation" do
     it "displays the word count", points: 1 do
       visit "/word_count/new"
 
@@ -147,7 +147,7 @@ RSpec.describe "Calculation", type: :feature do
       expect(page).to have_css(".character_count_without_spaces", text: 46)
     end
 
-    it "displays count of the special word occurrences", points: 4, hint: I18n.t("hints.seven") do
+    it "displays the count of the special word occurrences", points: 4, hint: I18n.t("hints.seven") do
 
       visit "/word_count/new"
 
@@ -163,7 +163,7 @@ RSpec.describe "Calculation", type: :feature do
     end
   end
 
-  describe "Loan Payment simple" do
+  describe "loan payment" do
     before do
       visit "/loan_payment/new"
       fill_in "annual_percentage_rate", with: 4.5
@@ -189,7 +189,7 @@ RSpec.describe "Calculation", type: :feature do
     end
   end
 
-  describe "Time Between simple" do
+  describe "time between" do
     before do
       visit "/time_between/new"
       fill_in "starting_time", with: "04/16/2015 4:00 PM"
@@ -232,7 +232,7 @@ RSpec.describe "Calculation", type: :feature do
     end
   end
 
-  describe "Descriptive Statistics simple" do
+  describe "descriptive statistics" do
     before do
       visit "/descriptive_statistics/new"
       fill_in "list_of_numbers", with: "10 1 2 3 4 5 6 7 8 8 9"
@@ -259,7 +259,7 @@ RSpec.describe "Calculation", type: :feature do
       expect(page).to have_css(".maximum", text: 10.0)
     end
 
-    it "displays the range between the lowest and highest numbers", points: 8 do
+    it "displays the range", points: 8 do
       expect(page).to have_css(".range", text: 9.0)
     end
 
@@ -279,7 +279,7 @@ RSpec.describe "Calculation", type: :feature do
       expect(page).to have_css(".variance", text: 8.01)
     end
 
-    it "displays the standard deviation of the numbers", points: 8 do
+    it "displays the standard deviation", points: 8 do
       expect(page).to have_css(".standard_deviation", text: 2.83)
     end
 
@@ -288,7 +288,7 @@ RSpec.describe "Calculation", type: :feature do
     end
   end
 
-  describe "Descriptive Statistics with even number of elements" do
+  describe "descriptive stats with an even number of elements" do
     before do
       visit "/descriptive_statistics/new"
       fill_in "list_of_numbers", with: "10 1 2 3 4 5 6 7 8 8"
@@ -311,7 +311,7 @@ RSpec.describe "Calculation", type: :feature do
       expect(page).to have_css(".maximum", text: 10.0)
     end
 
-    it "displays the range between the lowest and highest numbers", points: 1 do
+    it "displays the range", points: 1 do
       expect(page).to have_css(".range", text: 9.0)
     end
 
@@ -331,7 +331,7 @@ RSpec.describe "Calculation", type: :feature do
       expect(page).to have_css(".variance", text: 7.64)
     end
 
-    it "displays the standard deviation of the numbers", points: 1 do
+    it "displays the standard deviation", points: 1 do
       expect(page).to have_css(".standard_deviation", text: 2.76)
     end
 
