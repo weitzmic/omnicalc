@@ -163,58 +163,6 @@ RSpec.describe "Calculation", type: :feature do
     end
   end
 
-  describe "Word Count with newlines" do
-    it "displays the word count", points: 1 do
-      visit "/word_count/new"
-
-      fill_in "Text",
-        with: "The first draft is just you\ntelling yourself the story.\n"
-
-      fill_in "Special Word (optional)",
-        with: "story"
-
-      click_button "Submit"
-
-      expect(page).to have_css(".word_count", text: 10)
-    end
-
-    it "displays the character count with spaces", points: 1 do
-      visit "/word_count/new"
-
-      fill_in "Text",
-        with: "The first draft is just you\rtelling yourself the story.\n"
-
-      click_button "Submit"
-
-      expect(page).to have_css(".character_count_with_spaces", text: 55)
-    end
-
-    it "displays the character count without spaces", points: 1 do
-      visit "/word_count/new"
-
-      fill_in "Text",
-        with: "The first draft is just you\ntelling yourself the story.\n"
-
-      click_button "Submit"
-
-      expect(page).to have_css(".character_count_without_spaces", text: 46)
-    end
-
-    it "displays count of the special word occurrences", points: 4 do
-      visit "/word_count/new"
-
-      fill_in "Text",
-        with: "The first draft is just you\ntelling yourself the story.\n"
-
-      fill_in "Special Word (optional)",
-        with: "story"
-
-      click_button "Submit"
-
-      expect(page).to have_css(".occurrences", text: 1)
-    end
-  end
-
   describe "Loan Payment simple" do
     before do
       visit "/loan_payment/new"
