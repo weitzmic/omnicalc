@@ -16,7 +16,7 @@ RSpec.describe "Calculation", type: :feature do
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"text\"]", text: "the first draft is just you telling yourself the story")
+      expect(page).to have_css(".text", text: "the first draft is just you telling yourself the story")
     end
 
     it "displays the word count",
@@ -32,7 +32,7 @@ RSpec.describe "Calculation", type: :feature do
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"word_count\"]", text: 10)
+      expect(page).to have_css(".word_count", text: 10)
     end
 
     it "displays the character count with spaces",
@@ -46,7 +46,7 @@ RSpec.describe "Calculation", type: :feature do
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"character_count_with_spaces\"]", text: 54)
+      expect(page).to have_css(".character_count_with_spaces", text: 54)
     end
 
     it "displays the character count without spaces",
@@ -66,7 +66,7 @@ Don't forget to remove _all_ sorts of whitespace from the string, including newl
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"character_count_without_spaces\"]", text: 45)
+      expect(page).to have_css(".character_count_without_spaces", text: 45)
     end
 
     it "displays count of the special word occurrences",
@@ -83,7 +83,7 @@ Don't forget to remove _all_ sorts of whitespace from the string, including newl
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"occurrences\"]", text: 2)
+      expect(page).to have_css(".occurrences", text: 2)
     end
   end
 
@@ -96,7 +96,7 @@ Don't forget to remove _all_ sorts of whitespace from the string, including newl
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"word_count\"]", text: 10)
+      expect(page).to have_css(".word_count", text: 10)
     end
 
     it "displays the character count with spaces", points: 1 do
@@ -107,7 +107,7 @@ Don't forget to remove _all_ sorts of whitespace from the string, including newl
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"character_count_with_spaces\"]", text: 54)
+      expect(page).to have_css(".character_count_with_spaces", text: 54)
     end
 
     it "displays the character count without spaces",
@@ -130,7 +130,7 @@ to strip out all whitespace before doing your other processing." do
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"character_count_without_spaces\"]", text: 45)
+      expect(page).to have_css(".character_count_without_spaces", text: 45)
     end
 
     it "displays count of the special word occurrences", points: 4 do
@@ -144,7 +144,7 @@ to strip out all whitespace before doing your other processing." do
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"occurrences\"]", text: 2)
+      expect(page).to have_css(".occurrences", text: 2)
     end
   end
 
@@ -157,7 +157,7 @@ to strip out all whitespace before doing your other processing." do
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"word_count\"]", text: 10)
+      expect(page).to have_css(".word_count", text: 10)
     end
 
     it "displays the character count with spaces", points: 1 do
@@ -168,7 +168,7 @@ to strip out all whitespace before doing your other processing." do
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"character_count_with_spaces\"]", text: 55)
+      expect(page).to have_css(".character_count_with_spaces", text: 55)
     end
 
     it "displays the character count without spaces", points: 1 do
@@ -179,7 +179,7 @@ to strip out all whitespace before doing your other processing." do
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"character_count_without_spaces\"]", text: 46)
+      expect(page).to have_css(".character_count_without_spaces", text: 46)
     end
 
     it "displays count of the special word occurrences",
@@ -206,7 +206,7 @@ to strip out all punctuation before doing your other processing." do
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"occurrences\"]", text: 1)
+      expect(page).to have_css(".occurrences", text: 1)
     end
   end
 
@@ -222,7 +222,7 @@ to strip out all punctuation before doing your other processing." do
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"word_count\"]", text: 10)
+      expect(page).to have_css(".word_count", text: 10)
     end
 
     it "displays the character count with spaces", points: 1 do
@@ -233,7 +233,7 @@ to strip out all punctuation before doing your other processing." do
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"character_count_with_spaces\"]", text: 55)
+      expect(page).to have_css(".character_count_with_spaces", text: 55)
     end
 
     it "displays the character count without spaces", points: 1 do
@@ -244,7 +244,7 @@ to strip out all punctuation before doing your other processing." do
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"character_count_without_spaces\"]", text: 46)
+      expect(page).to have_css(".character_count_without_spaces", text: 46)
     end
 
     it "displays count of the special word occurrences", points: 4 do
@@ -258,7 +258,7 @@ to strip out all punctuation before doing your other processing." do
 
       click_button "Submit"
 
-      expect(page).to have_css("[data-grade=\"occurrences\"]", text: 1)
+      expect(page).to have_css(".occurrences", text: 1)
     end
   end
 
@@ -339,51 +339,51 @@ to strip out all punctuation before doing your other processing." do
     end
 
     it "parrots back the submitted numbers as an array", points: 1 do
-      expect(page).to have_css("[data-grade=\"numbers\"]", text: [10.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 8.0, 9.0])
+      expect(page).to have_css(".numbers", text: [10.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 8.0, 9.0])
     end
 
     it "displays the numbers as a sorted array", points: 4 do
-      expect(page).to have_css("[data-grade=\"sorted_numbers\"]", text: [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 8.0, 9.0, 10.0])
+      expect(page).to have_css(".sorted_numbers", text: [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 8.0, 9.0, 10.0])
     end
 
     it "displays the count of numbers", points: 4 do
-      expect(page).to have_css("[data-grade=\"count\"]", text: 11)
+      expect(page).to have_css(".count", text: 11)
     end
 
     it "displays the lowest number", points: 4 do
-      expect(page).to have_css("[data-grade=\"minimum\"]", text: 1.0)
+      expect(page).to have_css(".minimum", text: 1.0)
     end
 
     it "displays the highest number", points: 4 do
-      expect(page).to have_css("[data-grade=\"maximum\"]", text: 10.0)
+      expect(page).to have_css(".maximum", text: 10.0)
     end
 
     it "displays the range between the lowest and highest numbers", points: 8 do
-      expect(page).to have_css("[data-grade=\"range\"]", text: 9.0)
+      expect(page).to have_css(".range", text: 9.0)
     end
 
     it "displays the median of the numbers", points: 12 do
-      expect(page).to have_css("[data-grade=\"median\"]", text: 6.0)
+      expect(page).to have_css(".median", text: 6.0)
     end
 
     it "displays the sum of the numbers", points: 5 do
-      expect(page).to have_css("[data-grade=\"sum\"]", text: 63.0)
+      expect(page).to have_css(".sum", text: 63.0)
     end
 
     it "displays the mean of the numbers", points: 8 do
-      expect(page).to have_css("[data-grade=\"mean\"]", text: 5.72)
+      expect(page).to have_css(".mean", text: 5.72)
     end
 
     it "displays the variance of the numbers", points: 24 do
-      expect(page).to have_css("[data-grade=\"variance\"]", text: 8.01)
+      expect(page).to have_css(".variance", text: 8.01)
     end
 
     it "displays the standard deviation of the numbers", points: 8 do
-      expect(page).to have_css("[data-grade=\"standard_deviation\"]", text: 2.83)
+      expect(page).to have_css(".standard_deviation", text: 2.83)
     end
 
     it "displays the mode of the numbers", points: 8 do
-      expect(page).to have_css("[data-grade=\"mode\"]", text: 8.0)
+      expect(page).to have_css(".mode", text: 8.0)
     end
   end
 
@@ -395,47 +395,47 @@ to strip out all punctuation before doing your other processing." do
     end
 
     it "displays the numbers as a sorted array", points: 1 do
-      expect(page).to have_css("[data-grade=\"sorted_numbers\"]", text: [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 8.0, 10.0])
+      expect(page).to have_css(".sorted_numbers", text: [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 8.0, 10.0])
     end
 
     it "displays the count of numbers", points: 1 do
-      expect(page).to have_css("[data-grade=\"count\"]", text: 10)
+      expect(page).to have_css(".count", text: 10)
     end
 
     it "displays the lowest number", points: 1 do
-      expect(page).to have_css("[data-grade=\"minimum\"]", text: 1.0)
+      expect(page).to have_css(".minimum", text: 1.0)
     end
 
     it "displays the highest number", points: 1 do
-      expect(page).to have_css("[data-grade=\"maximum\"]", text: 10.0)
+      expect(page).to have_css(".maximum", text: 10.0)
     end
 
     it "displays the range between the lowest and highest numbers", points: 1 do
-      expect(page).to have_css("[data-grade=\"range\"]", text: 9.0)
+      expect(page).to have_css(".range", text: 9.0)
     end
 
     it "displays the median of the numbers", points: 9 do
-      expect(page).to have_css("[data-grade=\"median\"]", text: 5.5)
+      expect(page).to have_css(".median", text: 5.5)
     end
 
     it "displays the sum of the numbers", points: 1 do
-      expect(page).to have_css("[data-grade=\"sum\"]", text: 54.0)
+      expect(page).to have_css(".sum", text: 54.0)
     end
 
     it "displays the mean of the numbers", points: 1 do
-      expect(page).to have_css("[data-grade=\"mean\"]", text: 5.4)
+      expect(page).to have_css(".mean", text: 5.4)
     end
 
     it "displays the variance of the numbers", points: 1 do
-      expect(page).to have_css("[data-grade=\"variance\"]", text: 7.64)
+      expect(page).to have_css(".variance", text: 7.64)
     end
 
     it "displays the standard deviation of the numbers", points: 1 do
-      expect(page).to have_css("[data-grade=\"standard_deviation\"]", text: 2.76)
+      expect(page).to have_css(".standard_deviation", text: 2.76)
     end
 
     it "displays the mode of the numbers", points: 5 do
-      expect(page).to have_css("[data-grade=\"mode\"]", text: 8.0)
+      expect(page).to have_css(".mode", text: 8.0)
     end
   end
 end
