@@ -8,7 +8,7 @@
 #
 # In views, this is aliased to just `t`:
 #
-#     <%= t('hello') %>
+#     <%= t('hello') %|
 #
 # To use a different locale, set it with `I18n.locale`:
 #
@@ -20,4 +20,43 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hints:
+    one: "This test should pass right away."
+    two: |
+         Any contiguous chunk of non-whitespace characters counts as a "word". "Whitespace characters" include newlines (`\n`), tabs (`\t`), carriage returns (`\r`), etc.
+
+         `String` has a handy method called [split](https://apidock.com/ruby/String/split) that might help with all this; experiment with it in `rails console`!
+    three: "Don't count newlines (`\\n`) or carriage returns (`\\r`) at the end of the string (this is only an issue depending on certain users' browsers). [`String` has a `.chomp` method](https://apidock.com/ruby/String/chomp) that is perfect for taking care of these pesky trailing characters."
+    four: |
+          To remove characters that appear in places other than at the end of a `String`, `.chomp` won't do. Instead, try out the `.gsub` method in `rails console`:
+
+          ```ruby
+          "well hello!".gsub("ll", "✌️")
+          ```
+
+          Don't forget to remove _all_ sorts of whitespace from the string, including newlines (`\n`), tabs (`\t`), and carriage returns (`\r`)."
+    five: Read about [Ruby Count vs Length vs Size](https://rubyinrails.com/2014/01/15/ruby-count-vs-length-vs-size/), but please note that we prefer the style of including parentheses around method arguments, even though the linked blog post doesn't use them. So we prefer `c.count(7)`, not `c.count 7`.
+    six: |
+         Eventually, `gsub`bing every possible whitespace character one by one becomes impractical. However, `gsub` can also accept a **regular expression** as its first argument.
+
+         [Regular expressions](https://regexone.com/), or "regexes", are a very powerful way to search for _patterns_ within strings, and are almost a whole programming language unto themselves. In Ruby, regexes are wrapped in forward slashes, the way strings are wrapped in quotes.
+
+         We don't need to spend time learning regexes right now, but if you ever find yourself needing to detect particular _patterns_ within strings, then let them ring a bell. For now, the regex `/s+/` matches one or more contiguous whitespace characters. So, try something like
+
+         ```ruby
+         @text.gsub(/s+/, "")
+         ```
+
+         to strip out all whitespace before doing your other processing.
+    seven: |
+           Eventually, `gsub`bing every possible punctuation character one by one becomes impractical. However, `gsub` can also accept a **regular expression** as its first argument.
+
+           [Regular expressions](https://regexone.com/), or "regexes", are a very powerful way to search for _patterns_ within strings, and are almost a whole programming language unto themselves. In Ruby, regexes are wrapped in forward slashes, the way strings are wrapped in quotes.
+
+           We don't need to spend time learning regexes right now, but if you ever find yourself needing to detect particular _patterns_ within strings, then let them ring a bell. For now, the regex `/[^a-z0-9\s]/i` rejects any letter or digit. So, try something like
+
+           ```ruby
+           @text.gsub(/[^a-z0-9\s]/i, "")
+           ```
+
+           to strip out all punctuation before doing your other processing.

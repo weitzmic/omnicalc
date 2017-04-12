@@ -2,10 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Calculation", type: :feature do
   feature "Word Count simple" do
-    it "parrots back the submitted text",
-      points: 1,
-      hint: "This test should pass right away." do
-
+    it "parrots back the submitted text", points: 1, hint: I18n.t("hints.one") do
       visit "/word_count/new"
 
       fill_in "Text",
@@ -19,12 +16,7 @@ RSpec.describe "Calculation", type: :feature do
       expect(page).to have_css(".text", text: "the first draft is just you telling yourself the story")
     end
 
-    it "displays the word count",
-      points: 16,
-      hint: "Any contiguous chunk of non-whitespace characters counts as a \"word\". \"Whitespace characters\" include newlines (`\\n`), tabs (`\\t`), carriage returns (`\\r`), etc.
-
-`String` has a handy method called [split](https://apidock.com/ruby/String/split) that might help with all this; experiment with it in `rails console`!" do
-
+    it "displays the word count", points: 16, hint: I18n.t("hints.two") do
       visit "/word_count/new"
 
       fill_in "Text",
@@ -35,10 +27,7 @@ RSpec.describe "Calculation", type: :feature do
       expect(page).to have_css(".word_count", text: 10)
     end
 
-    it "displays the character count with spaces",
-      points: 4,
-      hint: "Don't count newlines (`\\n`) or carriage returns (`\\r`) at the end of the string (this is only an issue depending on certain users' browsers). [`String` has a `.chomp` method](https://apidock.com/ruby/String/chomp) that is perfect for taking care of these pesky trailing characters." do
-
+    it "displays the character count with spaces", points: 4, hint: I18n.t("hints.three") do
       visit "/word_count/new"
 
       fill_in "Text",
@@ -49,16 +38,7 @@ RSpec.describe "Calculation", type: :feature do
       expect(page).to have_css(".character_count_with_spaces", text: 54)
     end
 
-    it "displays the character count without spaces",
-      points: 12,
-      hint: "To remove characters that appear in places other than at the end of a `String`, `.chomp` won't do. Instead, try out the `.gsub` method in `rails console`:
-
-```ruby
-\"well hello!\".gsub(\"ll\", \"✌️\")
-```
-
-Don't forget to remove _all_ sorts of whitespace from the string, including newlines (`\\n`), tabs (`\\t`), and carriage returns (`\\r`)." do
-
+    it "displays the character count without spaces", points: 12, hint: I18n.t("hints.four") do
       visit "/word_count/new"
 
       fill_in "Text",
@@ -69,10 +49,7 @@ Don't forget to remove _all_ sorts of whitespace from the string, including newl
       expect(page).to have_css(".character_count_without_spaces", text: 45)
     end
 
-    it "displays count of the special word occurrences",
-      points: 16,
-      hint: "[Ruby Count vs Length vs Size](https://rubyinrails.com/2014/01/15/ruby-count-vs-length-vs-size/)" do
-
+    it "displays count of the special word occurrences", points: 16, hint: I18n.t("hints.five") do
       visit "/word_count/new"
 
       fill_in "Text",
@@ -110,19 +87,7 @@ Don't forget to remove _all_ sorts of whitespace from the string, including newl
       expect(page).to have_css(".character_count_with_spaces", text: 54)
     end
 
-    it "displays the character count without spaces",
-      points: 1,
-      hint: "Eventually, `gsub`bing every possible whitespace character one by one becomes impractical. However, `gsub` can also accept a **regular expression** as its first argument.
-
-[Regular expressions](https://regexone.com/), or \"regexes\", are a very powerful way to search for _patterns_ within strings, and are almost a whole programming language unto themselves. In Ruby, regexes are wrapped in forward slashes, the way strings are wrapped in quotes.
-
-We don't need to spend time learning regexes right now, but if you ever find yourself needing to detect particular _patterns_ within strings, then let them ring a bell. For now, the regex `/\\s+/` matches one or more contiguous whitespace characters. So, try something like
-
-```ruby
-@text.gsub(/\\s+/, \"\")
-```
-
-to strip out all whitespace before doing your other processing." do
+    it "displays the character count without spaces", points: 1, hint: I18n.t("hints.six") do
       visit "/word_count/new"
 
       fill_in "Text",
@@ -182,19 +147,7 @@ to strip out all whitespace before doing your other processing." do
       expect(page).to have_css(".character_count_without_spaces", text: 46)
     end
 
-    it "displays count of the special word occurrences",
-      points: 4,
-      hint: "Eventually, `gsub`bing every possible punctuation character one by one becomes impractical. However, `gsub` can also accept a **regular expression** as its first argument.
-
-[Regular expressions](https://regexone.com/), or \"regexes\", are a very powerful way to search for _patterns_ within strings, and are almost a whole programming language unto themselves. In Ruby, regexes are wrapped in forward slashes, the way strings are wrapped in quotes.
-
-We don't need to spend time learning regexes right now, but if you ever find yourself needing to detect particular _patterns_ within strings, then let them ring a bell. For now, the regex `/[^a-z0-9\\s]/i` rejects any letter or digit. So, try something like
-
-```ruby
-@text.gsub(/[^a-z0-9\\s]/i, \"\")
-```
-
-to strip out all punctuation before doing your other processing." do
+    it "displays count of the special word occurrences", points: 4, hint: I18n.t("hints.seven") do
 
       visit "/word_count/new"
 
