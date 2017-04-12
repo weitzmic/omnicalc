@@ -184,7 +184,7 @@ RSpec.describe "Using", type: :feature do
       expect(page).to have_content "$50,000"
     end
 
-    it "displays the calculated monthly payments", points: 32 do
+    it "displays the calculated monthly payments", points: 32, hint: I18n.t("hints.eight") do
       expect(page).to have_content "$253.34"
     end
   end

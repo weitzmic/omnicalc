@@ -59,3 +59,4 @@ en:
            ```
 
            to strip out all punctuation before doing your other processing.
+    eight: You can find a formula for payment at the bottom of [this section](https://en.wikipedia.org/wiki/Mortgage_calculator#Monthly_payment_formula) on the Wikipedia article on Mortgage calculators. Remember to think about units — is our calculator thinking about basis points? Months? Years? Percentages? Cents? Dollars?
