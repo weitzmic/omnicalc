@@ -11,13 +11,34 @@ class CalculationsController < ApplicationController
     # ================================================================================
 
 
-    @word_count = "Replace this string with your answer."
+    @word_count = @text.split.count
 
-    @character_count_with_spaces = "Replace this string with your answer."
+    @character_count_with_spaces = @text.length
 
-    @character_count_without_spaces = "Replace this string with your answer."
+    text_wo_spaces = @text.gsub(" ","")
+    text_wo_linefeed = text_wo_spaces.gsub("\n","")
+    text_wo_cr = text_wo_linefeed.gsub("\r","")
+    text_wo_tabs = text_wo_cr.gsub("\t","")
 
-    @occurrences = "Replace this string with your answer."
+    @character_count_without_spaces = text_wo_tabs.length
+
+    array_of_user_words = @text.split("")
+# Count number of words within the @special_word field
+    # step 1: convert @text from a string, to an array of words (with split)
+    # step 2: count number of words within new array_of_user_words
+    # step 3: count number of times @special word appears in array_of_user_words
+
+    # array_of_user_words = @text.split
+    # array_of_user_words.count => 7
+    # array_of_user_words.count(takes an object as an argument)
+    # @special_word is an object
+    #
+    # step 4: try giving .count, the argument of @special_word; what does it return?
+    # use puts to print out result
+
+    @occurrences = word_array.count(@special_word)
+
+    console
 
     # ================================================================================
     # Your code goes above.
