@@ -11,7 +11,8 @@ class CalculationsController < ApplicationController
     # ================================================================================
 
 
-    @word_count = @text.split.count
+    array_of_words = @text.split
+    @word_count = array_of_words.count
 
     @character_count_with_spaces = @text.length
 
@@ -22,8 +23,7 @@ class CalculationsController < ApplicationController
 
     @character_count_without_spaces = text_wo_tabs.length
 
-    array_of_user_words = @text.split("")
-# Count number of words within the @special_word field
+    # Count number of words within the @special_word field
     # step 1: convert @text from a string, to an array of words (with split)
     # step 2: count number of words within new array_of_user_words
     # step 3: count number of times @special word appears in array_of_user_words
@@ -36,9 +36,10 @@ class CalculationsController < ApplicationController
     # step 4: try giving .count, the argument of @special_word; what does it return?
     # use puts to print out result
 
-    @occurrences = word_array.count(@special_word)
+    array_of_user_words = @text.split
+    # array_of_user_words_downcase = array_of_user_words.downcase
 
-    console
+    @occurrences = array_of_user_words.count(@special_word)
 
     # ================================================================================
     # Your code goes above.
