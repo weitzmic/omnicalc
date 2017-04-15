@@ -36,8 +36,17 @@ class CalculationsController < ApplicationController
     # step 4: try giving .count, the argument of @special_word; what does it return?
     # use puts to print out result
 
-    array_of_user_words = @text.split
-    # array_of_user_words_downcase = array_of_user_words.downcase
+text_without_period = @text.gsub(".", "")
+text_without_comma = text_without_period.gsub(",", "")
+text_without_exclamation = text_without_comma.gsub("!", "")
+text_without_colon = text_without_exclamation.gsub(":", "")
+text_without_semicolon = text_without_colon.gsub(",", "")
+text_without_question_mark = text_without_semicolon.gsub("?", "")
+text_with_forward_slash = text_without_question_mark.gsub("/", "")
+text_without_back_slash = text_with_forward_slash.gsub("\\", "")
+
+downcase_text= text_without_back_slash.downcase
+array_of_user_words = downcase_text.split
 
     @occurrences = array_of_user_words.count(@special_word)
 
@@ -60,7 +69,11 @@ class CalculationsController < ApplicationController
     # The principal value the user input is in the decimal @principal.
     # ================================================================================
 
-    @monthly_payment = "Replace this string with your answer."
+    rate = @apr / 100 / 12
+    nper = @years * 12
+
+    @monthly_payment = (rate * @principal) / (1- (1+ rate)**-nper)
+
 
     # ================================================================================
     # Your code goes above.
@@ -82,12 +95,12 @@ class CalculationsController < ApplicationController
     #   number of seconds as a result.
     # ================================================================================
 
-    @seconds = "Replace this string with your answer."
-    @minutes = "Replace this string with your answer."
-    @hours = "Replace this string with your answer."
-    @days = "Replace this string with your answer."
-    @weeks = "Replace this string with your answer."
-    @years = "Replace this string with your answer."
+    @seconds = @ending - @starting
+    @minutes = @seconds / 60
+    @hours = @minutes / 60
+    @days = @hours / 24
+    @weeks = @days / 7
+    @years = @weeks / 52
 
     # ================================================================================
     # Your code goes above.
@@ -104,27 +117,57 @@ class CalculationsController < ApplicationController
     # The numbers the user input are in the array @numbers.
     # ================================================================================
 
-    @sorted_numbers = "Replace this string with your answer."
+    @sorted_numbers = @numbers.sort
 
-    @count = "Replace this string with your answer."
+    @count = @numbers.count
 
-    @minimum = "Replace this string with your answer."
+    @minimum = @numbers.min
 
-    @maximum = "Replace this string with your answer."
+    @maximum = @numbers.max
 
-    @range = "Replace this string with your answer."
+    @range = @numbers.max - @numbers.min
 
-    @median = "Replace this string with your answer."
+    @median =
 
-    @sum = "Replace this string with your answer."
+    if @count.odd?
+      @median = @sorted_numbers[@count / 2]
+    else
+      left_of_middle = @sorted_numbers[(@count / 2) - 1]
+      right_of_middle = @sorted_numbers[(@count / 2)]
+      @median = (left_of_middle + right_of_middle) / 2
+    end
 
-    @mean = "Replace this string with your answer."
 
-    @variance = "Replace this string with your answer."
+    @sum = @numbers.sum
 
-    @standard_deviation = "Replace this string with your answer."
+    @mean = @numbers.sum / @numbers.count
 
-    @mode = "Replace this string with your answer."
+    squared_differences = []
+
+    @numbers.each do |num|
+      difference = num - @mean
+      squared_difference = difference ** 2
+      squared_differences.push(squared_difference)
+    end
+
+    @variance = squared_differences.sum / @count
+
+    @standard_deviation = Math.sqrt(@variance)
+
+    leader = nil
+    leader_count = 0
+
+    @numbers.each do |num|
+      occurrences = @numbers.count(num)
+      if occurrences > leader_count
+        leader = num
+        leader_count = occurrences
+      end
+    end
+
+
+
+    @mode = leader
 
     # ================================================================================
     # Your code goes above.
